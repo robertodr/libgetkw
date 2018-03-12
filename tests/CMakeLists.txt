@@ -1,3 +1,6 @@
+#add_executable(unit_tests unit_tests.cpp)
+#target_link_libraries(unit_tests Catch)
+
 add_executable(cxx_test cxx_test.cpp)
 set_target_properties(cxx_test
   PROPERTIES

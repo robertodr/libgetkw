@@ -21,5 +21,6 @@ modules:
       - '%(url_root)modules/code_coverage.cmake'
   - custom:
     - source:
+      - 'custom/external.cmake'
       - 'custom/getkw.cmake'
       - 'custom/tests.cmake'
