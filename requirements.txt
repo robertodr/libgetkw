@@ -2,6 +2,7 @@ breathe
 docopt
 fprettify
 pyparsing
+pytest
 pyyaml
 recommonmark
 sphinx
