@@ -49,9 +49,7 @@ class Section:
         self.req = req
         self.isset = False
         self.callback = callback
-        self.fullname = self.name
-        if tag != None:
-            self.fullname = self.fullname + '<' + self.tag + '>'
+        self.fullname = F'{self.name}<{self.tag}>' if self.tag is not None else self.name
 
     def __cmp__(self, other):
         return cmp(self.name, other.name)
@@ -294,7 +292,7 @@ class Section:
         for i in self.kw:
             nkw = nkw + 1
 
-        s = "SECT {0} {1:d} {2}\n".format(self.name, nsect, self.isset)
+        s = F'SECT {self.name} {nsect:d} {self.isset}\n'
         if self.tag is not None:
             s += "TAG T KW {:d}\n".format(nkw)
             s += self.tag + '\n'
@@ -759,12 +757,12 @@ class GetkwParser:
 
         # Helper definitions
 
-        kstr= quotedString.setParseAction(removeQuotes) ^ \
-          dval ^ ival ^ lval ^ Word(prtable)
+        kstr = quotedString.setParseAction(
+            removeQuotes) ^ dval ^ ival ^ lval ^ Word(prtable)
         name = Word(alphas + "_", alphanums + "_")
-        vec=array_begin+delimitedList(dval ^ ival ^ lval ^ Word(prtable) ^ \
-          Literal("\n").suppress() ^ \
-          quotedString.setParseAction(removeQuotes))+array_end
+        vec = array_begin + delimitedList(
+            dval ^ ival ^ lval ^ Word(prtable) ^ Literal("\n").suppress() ^
+            quotedString.setParseAction(removeQuotes)) + array_end
         sect = name + sect_begin
         tag_sect = name + Group(tag_begin + name + tag_end) + sect_begin
 
