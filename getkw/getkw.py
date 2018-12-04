@@ -568,8 +568,13 @@ class GetkwParser:
         self.bnf.parseFile(fil)
         return Getkw(self.top)
 
-    def parseString(self, str):
-        self.bnf.parseString(str)
+    def parseString(self, inpstr):
+        try:
+            self.bnf.parseString(inpstr)
+        except pyparsing.ParseException as err:
+            print((err.line))
+            print((" " * (err.column - 1) + "^"))
+            print(err)
         return Getkw(self.top)
 
     def add_sect(self, s, l, t):
