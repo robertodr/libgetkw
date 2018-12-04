@@ -57,4 +57,4 @@ if(GETKW_Fortran_INTERFACE)
   add_subdirectory(Fortran)
 endif ()
 
-add_subdirectory(Python)
+add_subdirectory(getkw)
