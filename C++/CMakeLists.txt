@@ -16,7 +16,7 @@ list(APPEND _public_headers
 foreach(_header IN LISTS _public_headers)
  file(
     COPY ${_header}
-    DESTINATION ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+    DESTINATION ${PROJECT_BINARY_DIR}/${INSTALL_INCLUDEDIR}/${PROJECT_NAME}
     )
 endforeach()
 
@@ -24,8 +24,6 @@ target_sources(getkw
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/Getkw.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Section.cpp
-  PUBLIC
-    $<BUILD_INTERFACE:$<JOIN:${CMAKE_CURRENT_LIST_DIR}/,${_public_headers}>>
   )
 
 target_compile_definitions(getkw
@@ -44,6 +42,7 @@ target_compile_options(getkw
 target_include_directories(getkw
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+    $<BUILD_INTERFACE:${INSTALL_INCLUDEDIR}>
     $<INSTALL_INTERFACE:${INSTALL_INCLUDEDIR}>
   )
 
