@@ -1,4 +1,4 @@
-option_with_default(ENABLE_TESTS "Enable testing" OFF)
+option_with_default(ENABLE_TESTS "Enable testing" ON)
 
 if(ENABLE_TESTS)
   enable_testing()
