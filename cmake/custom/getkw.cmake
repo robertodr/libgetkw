@@ -47,6 +47,9 @@ set(INSTALL_PYMODDIR ${INSTALL_LIBDIR}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VE
 
 if(GETKW_CXX_INTERFACE)
   add_subdirectory(C++)
+
+  # Alias useful for use with FetchContent
+  add_library(getkw::getkw ALIAS getkw)
 endif ()
 
 if(GETKW_C_INTERFACE)
