@@ -1,7 +1,7 @@
 file(
   COPY
-    ${CMAKE_CURRENT_LIST_DIR}/getkw.py
-    ${CMAKE_CURRENT_LIST_DIR}/pyparsing.py
+    getkw.py
+    pyparsing.py
   DESTINATION
     ${INSTALL_PYMODDIR}
   )
