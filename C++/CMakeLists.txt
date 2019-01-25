@@ -12,6 +12,14 @@ list(APPEND _public_headers
    messages.hpp
   )
 
+# Copy headers to build-dir to mirror install-dir layout
+foreach(_header IN LISTS _public_headers)
+ file(
+    COPY ${_header}
+    DESTINATION ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+    )
+endforeach()
+
 target_sources(getkw
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/Getkw.cpp
