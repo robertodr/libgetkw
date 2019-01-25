@@ -104,3 +104,6 @@ install(
   DESTINATION
     ${INSTALL_CMAKEDIR}
   )
+
+# Alias useful for use with FetchContent
+add_library(getkw::getkw ALIAS getkw)
